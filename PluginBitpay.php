@@ -43,6 +43,7 @@ class PluginBitpay extends GatewayPlugin
 
     public function credit($params)
     {
+        return $this->user->lang("This payment gateway does not support refunds.");
     }
 
     public function singlepayment($params, $test = false)
