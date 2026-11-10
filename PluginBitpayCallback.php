@@ -10,6 +10,11 @@ class PluginBitpayCallback extends PluginCallback
 
     function processCallback()
     {
+        // Execute PluginCallback::processCallback() first
+        if (!parent::processCallback()) {
+            return;
+        }
+
         $data = file_get_contents("php://input");
         $json = json_decode($data, true);
         CE_Lib::log(4, "Callback: ". print_r($json, true));
